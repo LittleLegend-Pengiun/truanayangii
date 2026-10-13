@@ -3,3 +3,7 @@ dist/
 *.tsbuildinfo
 .env*
 .DS_Store
+/.idea/.gitignore
+/.idea/modules.xml
+/.idea/truanayangii.iml
+/.idea/vcs.xml
