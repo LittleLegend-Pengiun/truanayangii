@@ -9,7 +9,9 @@
     "preview": "vite preview --host 127.0.0.1",
     "test": "node --test tests/cookies.test.mjs tests/case-mechanics.test.mjs && node tests/personal-pool.cjs",
     "typecheck": "tsc --noEmit",
-    "start": "vite --host 127.0.0.1"
+    "start": "vite --host 127.0.0.1",
+    "deploy": "gh-pages -d dist -b gh-host-page",
+    "prepare": "husky"
   },
   "dependencies": {
     "@base-ui/react": "1.8.0",
@@ -28,6 +30,8 @@
     "@types/react-dom": "19.2.7",
     "@vitejs/plugin-react": "6.1.1",
     "esbuild": "0.28.2",
+    "gh-pages": "^6.3.0",
+    "husky": "^9.1.7",
     "tailwindcss": "4.3.3",
     "typescript": "7.0.2",
     "vite": "8.2.2"
