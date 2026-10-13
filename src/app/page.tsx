@@ -392,7 +392,7 @@ export default function Home() {
                 </section>
 
             </>
-                <footer><span>Trưa Nay Ăn Gì 9 · <a
+                <footer><span>Trưa Nay Ăn Gì - test 10 · <a
                     href={`${basePath}/privacy.html`}>{language === 'vi' ? 'Quyền riêng tư' : 'Privacy'}</a> · <a
                     href={`${basePath}/terms.html`}>{language === 'vi' ? 'Điều khoản' : 'Terms'}</a></span><span>{t.footer}
                     <a
