@@ -100,6 +100,42 @@ export const foods: Food[] = [
         "quip": ""
     },
     {
+        "name": "Cơm gà cô Đào",
+        "sub": "Món ăn trưa",
+        "price": 45,
+        "image": 9,
+        "veg": false,
+        "quip": ""
+    },    {
+        "name": "Cơm gà cô Đào",
+        "sub": "Món ăn trưa",
+        "price": 45,
+        "image": 9,
+        "veg": false,
+        "quip": ""
+    },    {
+        "name": "Cơm gà cô Đào",
+        "sub": "Món ăn trưa",
+        "price": 45,
+        "image": 9,
+        "veg": false,
+        "quip": ""
+    },    {
+        "name": "Cơm gà cô Đào",
+        "sub": "Món ăn trưa",
+        "price": 45,
+        "image": 9,
+        "veg": false,
+        "quip": ""
+    },    {
+        "name": "Cơm gà cô Đào",
+        "sub": "Món ăn trưa",
+        "price": 45,
+        "image": 9,
+        "veg": false,
+        "quip": ""
+    },
+    {
         "name": "Bún bò",
         "sub": "Món ăn trưa",
         "price": 50,
