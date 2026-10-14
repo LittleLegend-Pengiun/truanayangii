@@ -5,7 +5,7 @@ export type Language = 'vi' | 'en';
 export const copy = {
   vi: {
     tiers: ['QUỐC DÂN', 'HIẾM', 'CỰC PHẨM', 'TỐI MẬT', '★ ĐẶC BIỆT'],
-    title: 'Mở hòm ăn trưa', counterPrefix: 'Đã ghi nhận', counterSuffix: 'hòm',
+    title: 'Chọn món cho nhà hàng Annie', counterPrefix: 'Đã ghi nhận', counterSuffix: 'hòm',
     counterTitle: 'Lượt quay hoàn tất được ghi nhận trên website này', caseLabel: 'Mở hòm món ăn',
     soundOn: 'Âm thanh bật', soundOff: 'Âm thanh tắt', turnSoundOff: 'Tắt âm thanh', turnSoundOn: 'Bật âm thanh',
     github: 'Mở mã nguồn trên GitHub', starsPending: 'chưa tải', language: 'Switch to English',

@@ -290,7 +290,7 @@ export default function Home() {
                                   d="M14.2 21v-8h2.7l.4-3.1h-3.1v-2c0-.9.3-1.5 1.6-1.5h1.7V3.6c-.3 0-1.3-.1-2.5-.1-2.5 0-4.2 1.5-4.2 4.3v2.1H8V13h2.8v8h3.4Z"/>
                         </svg>
                         <span>Facebook</span></a><a className="github-button"
-                                                    href="https://github.com/truanayangi-com/truanayangi"
+                                                    href="https://github.com/LittleLegend-Pengiun/truanayangii"
                                                     target="_blank" rel="noreferrer" aria-label={t.github}>
                         <svg className="github-mark" viewBox="0 0 24 24" aria-hidden="true">
                             <path fill="currentColor"
@@ -392,12 +392,12 @@ export default function Home() {
                 </section>
 
             </>
-                <footer><span>Trưa Nay Ăn Gì - test 10 · <a
-                    href={`${basePath}/privacy.html`}>{language === 'vi' ? 'Quyền riêng tư' : 'Privacy'}</a> · <a
-                    href={`${basePath}/terms.html`}>{language === 'vi' ? 'Điều khoản' : 'Terms'}</a></span><span>{t.footer}
-                    <a
+                <footer>
+                    <span>Trưa Nay Ăn Gì · <a href={`${basePath}/privacy.html`}>{language === 'vi' ? 'Quyền riêng tư' : 'Privacy'}</a> · <a href={`${basePath}/terms.html`}>{language === 'vi' ? 'Điều khoản' : 'Terms'}</a></span><span>{t.footer}<a
                         href="https://github.com/sourcesounds/csgo" target="_blank"
-                        rel="noreferrer">SourceSounds</a></span></footer>
+                        rel="noreferrer">SourceSounds</a>
+                    </span>
+                </footer>
             </main>
         </div>
     )
