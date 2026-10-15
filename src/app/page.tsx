@@ -18,8 +18,9 @@ import {Switch} from '@/components/ui/switch';
 
 const basePath = import.meta.env.BASE_URL.replace(/\/$/, '');
 
-
 const colors = ['#4b69ff', '#8847ff', '#d32ce6', '#eb4b4b', '#e4ae39'];
+
+const DEFAULT_DROP_RATE = 1;
 
 function FoodImage({food, language}: { food: Food; language: Language }) {
     if (food.customId) return <div className="food-image custom-food-art" role="img" aria-label={food.name}><Utensils
@@ -193,11 +194,46 @@ export default function Home() {
         cancelAnimationFrame(frame.current)
     }, []);
 
+    function getDropRate(food: Food): number {
+        const rate = food.dropRate ?? DEFAULT_DROP_RATE;
+
+        return Number.isFinite(rate) && rate > 0 ? rate : 0;
+    }
+
+    function chooseByDropRate(foods: Food[]): Food {
+        const total = foods.reduce(
+            (sum, food) => sum + getDropRate(food),
+            0
+        );
+
+        if (total <= 0) {
+            throw new Error("No food has a valid drop rate");
+        }
+
+        let random = Math.random() * total;
+
+        for (const food of foods) {
+            random -= getDropRate(food);
+
+            if (random < 0) {
+                return food;
+            }
+        }
+
+        return foods[foods.length - 1];
+    }
+
     function open() {
         if (busy.current || !validTarget || !eligible.length || !lunchSelector || !track.current || !viewport.current) return;
         audio.current?.unlock();
         busy.current = true;
-        const winner = lunchSelector.choose(eligible);
+        const weightedEligible = eligible.filter(
+            food => getDropRate(food) > 0
+        );
+
+        if (!weightedEligible.length) return;
+
+        const winner = chooseByDropRate(weightedEligible);
 
         const step = 254, tileWidth = 240, width = viewport.current.clientWidth;
         const start = position.current;
@@ -213,8 +249,14 @@ export default function Home() {
         const last = Math.max(... items.map(item => item.id));
         const recent: Food[] = [];
         for (let id = last + 1; id <= target + 4; id++) {
-            const alternatives = eligible.filter(food => !recent.includes(food) && (lunchSelector.probabilities.get(food) ?? 0) > 0);
-            const food = id === target ? winner : lunchSelector.choose(alternatives.length ? alternatives : eligible);
+            const alternatives = weightedEligible.filter(
+                food => !recent.includes(food)
+            );
+            const food = id === target
+                ? winner
+                : chooseByDropRate(
+                    alternatives.length ? alternatives : weightedEligible
+                );
             items.push({id, food});
             recent.push(food);
             if (recent.length > 8) recent.shift();
