@@ -170,7 +170,7 @@ export const foods: Food[] = [
     {
         "name": "Bánh cuốn",
         "sub": "Món ăn trưa",
-        "price": 35,
+        "price": 25,
         "image": 14,
         "veg": false,
         "quip": ""
@@ -672,14 +672,14 @@ export const foods: Food[] = [
         "image": 84,
         "quip": ""
     },
-    // {
-    //     "name": "Nem nướng",
-    //     "price": 55,
-    //     "sub": "Phần cuốn đủ bữa • Việt Nam",
-    //     "veg": false,
-    //     "image": 85,
-    //     "quip": ""
-    // },
+    {
+        "name": "Nem nướng",
+        "price": 55,
+        "sub": "Phần cuốn đủ bữa • Việt Nam",
+        "veg": false,
+        "image": 85,
+        "quip": ""
+    },
     // {
     //     "name": "Dimsum",
     //     "price": 130,
@@ -704,14 +704,14 @@ export const foods: Food[] = [
     //     "image": 88,
     //     "quip": ""
     // },
-    // {
-    //     "name": "Mì xào giòn",
-    //     "price": 70,
-    //     "sub": "Hải sản & rau củ",
-    //     "veg": false,
-    //     "image": 89,
-    //     "quip": ""
-    // },
+    {
+        "name": "Mì xào giòn",
+        "price": 70,
+        "sub": "Hải sản & rau củ",
+        "veg": false,
+        "image": 89,
+        "quip": ""
+    },
     // {
     //     "name": "Cơm niêu Singapore",
     //     "price": 85,
@@ -973,13 +973,13 @@ export const foods: Food[] = [
         "quip": "Chấm bánh mì. Đừng chấm công muộn.",
         "image": 122
     },
-    // {
-    //     "name": "Xôi mặn",
-    //     "price": 35,
-    //     "sub": "Gà, thịt hoặc chả • Việt Nam",
-    //     "quip": "Dẻo dai đến hết ca chiều.",
-    //     "image": 123
-    // },
+    {
+        "name": "Xôi mặn",
+        "price": 35,
+        "sub": "Gà, thịt hoặc chả • Việt Nam",
+        "quip": "Dẻo dai đến hết ca chiều.",
+        "image": 123
+    },
     // {
     //     "name": "Bánh mì chảo",
     //     "price": 45,
