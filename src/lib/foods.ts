@@ -292,7 +292,7 @@ const tierCFood: Food[] = ([
         image: 84,
         quip: ""
     },
-] as Food[]);
+] as Food[]).map(food => ({...food, dropRate: food.dropRate ?? 1,}));
 
 // Never
 const tierDFood: Food[] = ([

@@ -1,7 +1,7 @@
 import {readCookie, writeCookie} from '@/lib/cookies';
 
 'use client';
-import {createSpinProfile, spinProgress, createFoodSelector, stopFraction} from '@/lib/case-mechanics';
+import {createSpinProfile, spinProgress, stopFraction} from '@/lib/case-mechanics';
 import {foods, type Food} from '@/lib/foods';
 import {copy, foodName, foodSubtitle, priceLabel, type Language} from '@/lib/i18n';
 import {useLocalSpinCount} from '@/hooks/use-local-spin-count';
@@ -18,9 +18,7 @@ import {Switch} from '@/components/ui/switch';
 
 const basePath = import.meta.env.BASE_URL.replace(/\/$/, '');
 
-const colors = ['#4b69ff', '#8847ff', '#d32ce6', '#eb4b4b', '#e4ae39'];
-
-const DEFAULT_DROP_RATE = 1;
+const colors = ['#4b69ff', '#8847ff', '#d32ce6', '#eb4b4b', '#e4ae39', '#808080',];
 
 function FoodImage({food, language}: { food: Food; language: Language }) {
     if (food.customId) return <div className="food-image custom-food-art" role="img" aria-label={food.name}><Utensils
@@ -68,25 +66,49 @@ function MysteryArt({language}: { language: Language }) {
     </div>
 }
 
-const Card = memo(function Card({food, language, small = false, slot}: {
+const Card = memo(function Card({food, language, small = false, slot,} : {
     food: Food;
     language: Language;
     small?: boolean;
-    slot?: number
+    slot?: number;
 }) {
-    const mystery = !small && food.rarity === 4, t = copy[language];
-    return <div className={`food-card ${small ? 'small' : ''} ${mystery ? 'mystery-card' : ''}`} data-slot-id={slot}
-                data-food-id={food.image} style={{
-        '--rarity': colors[food.rarity], ... (slot === undefined ? {} : {
-            position: 'absolute',
-            left: slot * 254
-        })
-    } as React.CSSProperties}><span className="tier">{t.tiers[food.rarity]}</span>{mystery ?
-        <MysteryArt language={language}/> : <FoodImage food={food} language={language}/>}
-        <div className="card-copy">
-            <strong>{mystery ? t.mystery : foodName(food, language)}</strong><span>{small ? priceLabel(food.price, language, true) : foodSubtitle(food, language)}</span>
+    const disabled = food.dropRate === 0;
+    const mystery = !small && food.rarity === 4;
+    const t = copy[language];
+
+    return (
+        <div
+            className={`food-card ${small ? 'small' : ''} ${
+                mystery ? 'mystery-card' : ''
+            } ${disabled ? 'disabled' : ''}`}
+            data-slot-id={slot}
+            data-food-id={food.image}
+            style={{
+                '--rarity': colors[disabled ? 5 : food.rarity],
+                ...(slot === undefined
+                    ? {}
+                    : {
+                        position: 'absolute',
+                        left: slot * 254,
+                    }),
+            } as React.CSSProperties}
+        >
+            <span className="tier">{t.tiers[food.rarity]}</span>
+            {mystery ? (
+                <MysteryArt language={language} />
+            ) : (
+                <FoodImage food={food} language={language} />
+            )}
+            <div className="card-copy">
+                <strong>{mystery ? t.mystery : foodName(food, language)}</strong>
+                <span>
+          {small
+              ? priceLabel(food.price, language, true)
+              : foodSubtitle(food, language)}
+        </span>
+            </div>
         </div>
-    </div>
+    );
 });
 
 export default function Home() {
@@ -195,7 +217,7 @@ export default function Home() {
     }, []);
 
     function getDropRate(food: Food): number {
-        const rate = food.dropRate ?? DEFAULT_DROP_RATE;
+        const rate = food.dropRate ?? -1;
 
         return Number.isFinite(rate) && rate > 0 ? rate : 0;
     }
